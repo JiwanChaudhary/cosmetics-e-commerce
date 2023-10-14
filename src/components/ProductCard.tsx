@@ -1,4 +1,7 @@
+"use client";
+
 import Image from "next/image";
+import { useRouter } from "next/navigation";
 import * as React from "react";
 import {
   AiFillStar,
@@ -16,7 +19,8 @@ type ProductCardProps = {
 };
 
 const ProductCard = ({ id, img, name, price, sale }: ProductCardProps) => {
-  
+  const router = useRouter();
+
   // get random rating
   const getRating = () => {
     const getRandomNumber = (min: number, max: number) => {
@@ -88,7 +92,10 @@ const ProductCard = ({ id, img, name, price, sale }: ProductCardProps) => {
   };
 
   return (
-    <div className="group cursor-pointer border border-black rounded-tl-none rounded-tr-none rounded-b-lg">
+    <div
+      onClick={() => router.push(`/details/${id}`)}
+      className="group cursor-pointer border border-black rounded-tl-none rounded-tr-none rounded-b-lg"
+    >
       <div className="relative">
         <Image
           className="w-full"
