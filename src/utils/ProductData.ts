@@ -1,3 +1,12 @@
+type DataTypes = {
+  id: number;
+  img: string;
+  name: string;
+  price: number;
+  category: string[];
+  sale: boolean;
+};
+
 export const Data = [
   {
     id: 0,
@@ -20,7 +29,7 @@ export const Data = [
     img: "/images/product_1.jpg",
     name: "No way product",
     price: 10,
-    category: ["lipsticks", "skin care"],
+    category: ["lipsticks", "makeup"],
     sale: false,
   },
   {
@@ -47,4 +56,4 @@ export const Data = [
     category: ["lipsticks"],
     sale: true,
   },
-];
+]; 

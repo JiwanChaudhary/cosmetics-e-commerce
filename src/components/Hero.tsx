@@ -10,7 +10,6 @@ const Hero = () => {
         height={900}
         src="/images/hero.png"
         alt="hero image"
-        objectFit="cover"
       />
 
       {/* text inside image */}

@@ -16,6 +16,8 @@ type ProductCardProps = {
 };
 
 const ProductCard = ({ id, img, name, price, sale }: ProductCardProps) => {
+  
+  // get random rating
   const getRating = () => {
     const getRandomNumber = (min: number, max: number) => {
       return Math.floor(Math.random() * (max - min)) + min;
