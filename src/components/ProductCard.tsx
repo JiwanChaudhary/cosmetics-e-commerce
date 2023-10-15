@@ -1,5 +1,7 @@
 "use client";
 
+import { addToCart } from "@/redux/features/cartSlice";
+import { useAppDispatch } from "@/redux/hooks";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
 import * as React from "react";
@@ -20,6 +22,7 @@ type ProductCardProps = {
 
 const ProductCard = ({ id, img, name, price, sale }: ProductCardProps) => {
   const router = useRouter();
+  const dispatch = useAppDispatch();
 
   // get random rating
   const getRating = () => {
@@ -91,6 +94,20 @@ const ProductCard = ({ id, img, name, price, sale }: ProductCardProps) => {
     }
   };
 
+  // add product to cart
+  const addProductToCart = (e: React.FormEvent) => {
+    e.stopPropagation();
+    const payload = {
+      id,
+      name,
+      img,
+      price,
+      quantity: 1,
+    };
+
+    dispatch(addToCart(payload));
+  };
+
   return (
     <div
       onClick={() => router.push(`/details/${id}`)}
@@ -117,12 +134,12 @@ const ProductCard = ({ id, img, name, price, sale }: ProductCardProps) => {
               <AiOutlineHeart />
             </div>
             <div
-              className={`${
-                sale &&
+              className={
                 "b bg-white w-[50px] h-[50px] text-[26px] grid place-items-center"
-              }`}
+              }
+              onClick={addProductToCart}
             >
-              {sale && <AiOutlineShoppingCart />}
+              <AiOutlineShoppingCart />
             </div>
           </div>
         </div>

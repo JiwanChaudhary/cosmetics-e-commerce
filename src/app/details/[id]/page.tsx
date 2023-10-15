@@ -12,6 +12,7 @@ import {
 } from "react-icons/ai";
 
 import { MdCompareArrows } from "react-icons/md";
+import { FaFacebookSquare, FaTwitter, FaInstagram } from "react-icons/fa";
 
 type DetailPageProps = {
   id: string;
@@ -32,7 +33,7 @@ const DetailPage = ({ params }: { params: DetailPageProps }) => {
 
   useEffect(() => {
     setProductData(Data.filter((item) => item.id === id));
-  }, []);
+  }, [id]);
 
   return (
     <div className=" pt-8">
@@ -105,6 +106,27 @@ const DetailPage = ({ params }: { params: DetailPageProps }) => {
               <div className=" flex gap-1 items-center">
                 <MdCompareArrows />
                 Compare
+              </div>
+            </div>
+
+            <div className="w-[30px] h-[2px] bg-gray-400" />
+            <div>Name: {productData[0]?.name}</div>
+            <div className=" capitalize">
+              Category: {productData[0]?.category[0]}
+            </div>
+            <div className=" flex gap-1 items-center capitalize">
+              Tags:
+              {productData[0]?.category.map((item) => (
+                <div key={item}>{item},</div>
+              ))}
+            </div>
+
+            <div className="w-[30px] h-[2px] bg-gray-400" />
+
+            <div className=" flex gap-1 items-center pt-4">
+              SHARE:
+              <div className="flex gap-2 items-center text-[18px]">
+                <FaFacebookSquare /> <FaTwitter /> <FaInstagram />
               </div>
             </div>
           </div>
